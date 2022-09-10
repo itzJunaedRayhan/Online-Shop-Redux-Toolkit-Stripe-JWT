@@ -7,6 +7,9 @@ import Cart from './Components/Cart/Cart';
 import Home from './Components/Home/Home';
 import Navbar from './Components/Navbar/Navbar';
 import NotFound from './Components/NotFound/NotFound';
+import Register from './Components/Register/Register';
+import Login from './Components/Login/Login';
+import CheckoutSuccess from './Components/Checkout/CheckoutSuccess';
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         <Routes>
           <Route path="cart" element={<Cart />}></Route>
           <Route path="/not-found" element={<NotFound/>}></Route>
+          <Route path='/register' element={<Register/>}></Route>
+          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/checkout-success' element={<CheckoutSuccess/>}></Route>
           <Route path="/" element={<Home/>}></Route>
           <Route path='*' element={<NotFound/>}></Route>
         </Routes>

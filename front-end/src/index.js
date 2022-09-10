@@ -6,12 +6,14 @@ import {Provider} from "react-redux";
 import productsReducer, { productsFetch } from "./Redux-Toolkit/Features/ProductsSlice";
 import { productsApi } from './Redux-Toolkit/Features/productsApi';
 import cartReducer, { getTotals } from './Redux-Toolkit/Features/cartSlice';
+import AuthReducer, { loadUser } from './Redux-Toolkit/Features/AuthSlice';
 
 const root  = ReactDOM.createRoot(document.getElementById('root'));
 const store = configureStore({
   reducer: {
     products: productsReducer,
     cart: cartReducer,
+    auth: AuthReducer,
     [productsApi.reducerPath] : productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => 
@@ -20,6 +22,8 @@ const store = configureStore({
 
 store.dispatch(productsFetch());
 store.dispatch(getTotals());
+store.dispatch(loadUser(null));
+
 
 root.render(
   <React.StrictMode>

@@ -290,6 +290,11 @@
     cursor: pointer;
 }
 
+.cart-checkout .cart-login {
+    background-color: yellow;
+    color: black;
+}
+
 .continue-shopping,
 .start-shopping {
     margin-top: 1rem;

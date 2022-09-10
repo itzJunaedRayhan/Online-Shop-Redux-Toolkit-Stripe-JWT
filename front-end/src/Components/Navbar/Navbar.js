@@ -1,10 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import styled from 'styled-components';
+import { logoutUser } from '../../Redux-Toolkit/Features/AuthSlice';
 
 const Navbar = () => {
     const {cartTotalQuantity} = useSelector(state => state.cart);
+    const auth = useSelector(state => state.auth);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     return (
         <nav className="nav-bar">
             <h2 onClick={() => navigate("/")}>Online Shop</h2>
@@ -16,8 +21,31 @@ const Navbar = () => {
                     <span>{cartTotalQuantity}</span>
                 </span>
             </div>
+            {
+                auth._id ? 
+                <Logout onClick={() => {dispatch(logoutUser(null)); toast.warning("Logged Out!", {position: "bottom-left"})}}>Logout</Logout> : 
+                <AuthLinks>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                </AuthLinks>
+            }
         </nav>
     );
 };
 
 export default Navbar;
+
+
+const AuthLinks = styled.div`
+    a {
+        color:white;
+        &:last-child{
+            margin-left: 2rem;
+        }
+    }
+`;
+
+const Logout = styled.div`
+    color: white;
+    cursor: pointer;
+`
