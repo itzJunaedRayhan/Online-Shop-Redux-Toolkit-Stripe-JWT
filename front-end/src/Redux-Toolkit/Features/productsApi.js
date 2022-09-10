@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const productsApi = createApi({
     reducerPath: "productsApi",
-    baseQuery: fetchBaseQuery({baseUrl: "http://localhost:5000"}),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://guarded-springs-69261.herokuapp.com" }),
     endpoints: (builder) => ({
         getAllProducts: builder.query({
             query: () => "products",
@@ -10,4 +10,4 @@ export const productsApi = createApi({
     }),
 });
 
-export const {useGetAllProductsQuery} = productsApi;
+export const { useGetAllProductsQuery } = productsApi;

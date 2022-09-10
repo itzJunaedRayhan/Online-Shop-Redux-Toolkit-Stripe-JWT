@@ -1,1 +1,1 @@
-export const url = "http://localhost:5000/api";
+export const url = "https://guarded-springs-69261.herokuapp.com/api";
